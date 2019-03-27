@@ -2,36 +2,43 @@ package se.lexicon.Shadow_Fight;
 
 public class Attack {
 
-	public static void calculation(Players p, Enemy e, int round) {
+	public static String calculation(Fighter p1, Fighter p2, int round) {
 
-		while (p.getHealth() > 0 && e.getHealth1() > 0) {
+		System.out.println(p1.getName() + " atack first");
 
-			int outcome = p.getFight() - e.getDefense1();
+		while (p1.getHealth() > 0 && p2.getHealth() > 0) {
+
+			int outcome = (p1.getFight() + p1.getStrength()) - p2.getDefense();
 			int outcome1 = 2 * outcome;
-			e.setHealth1(e.getHealth1() - outcome1);
-			System.out.println("\n"+p.getName()+" attack "+e.getName() + outcome + 
-					" damage!\n"+ e.getName() +" Health: " + e.getHealth1());
+			p2.setHealth(p2.getHealth() - outcome1);
+			System.out.println("\n " + p1.getName() + " attack " + p2.getName() + " " + outcome1 + " damage!\n "
+					+ p2.getName() + "'s" + " Health: is " + p2.getHealth());
 
-			if (e.getHealth1() <= 0) {
+			if (p2.getHealth() <= 0) {
 				break;
 			}
 
-			outcome = e.getFight1() - p.getDefense();
+			outcome = (p2.getFight() + p2.getStrength()) - p1.getDefense();
 			outcome1 = 2 * outcome;
-			p.setHealth(p.getHealth() - outcome1);
-			System.out.println("\n"+e.getName()+" attack "+ p.getName() + outcome1 + 
-					" damage!\n"+p.getName()+" Health: " + p.getHealth());
-			System.out.println(" Round " + round++);
+			p1.setHealth(p1.getHealth() - outcome1);
+			System.out.println("\n " + p2.getName() + " attack " + p1.getName() + " " + outcome1 + " damage!\n "
+					+ p1.getName() + "'s" + " Health: is " + p1.getHealth());
+			System.out.println(" ==== Round " + round++ + "   ====");
 
 		}
-		if (e.getHealth1() <= 0 && p.getHealth() > 0) {
-			System.out.println("You win!");
+		if (p2.getHealth() <= 0 && p1.getHealth() >= 0) {
+			System.out.println(" ==== " + p1.getName() + " You win! ====");
+			System.out.println("================================");
+			return p1.getName() + " win in " + round + " rounds (" + p1.getName() + " atack first)";
 
 		}
-		if (p.getHealth() <= 0 && e.getHealth1() > 0) {
-			System.out.println("You lose!");
+		if (p1.getHealth() <= 0 && p2.getHealth() >= 0) {
+			System.out.println(" ==== " + p2.getName() + " You win! ====");
+			System.out.println("================================");
+			return p2.getName() + " win in " + round + " rounds (" + p1.getName() + " atack first)";
 
 		}
+		return null;
 
 	}
 
