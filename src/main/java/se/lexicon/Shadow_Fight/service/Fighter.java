@@ -1,4 +1,4 @@
-package se.lexicon.Shadow_Fight;
+package se.lexicon.Shadow_Fight.service;
 
 public class Fighter {
 

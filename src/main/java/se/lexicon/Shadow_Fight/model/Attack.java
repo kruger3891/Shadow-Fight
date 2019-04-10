@@ -1,4 +1,6 @@
-package se.lexicon.Shadow_Fight;
+package se.lexicon.Shadow_Fight.model;
+
+import se.lexicon.Shadow_Fight.service.Fighter;
 
 public class Attack {
 

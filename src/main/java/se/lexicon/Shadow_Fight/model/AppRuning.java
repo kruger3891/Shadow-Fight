@@ -1,4 +1,4 @@
-package se.lexicon.Shadow_Fight;
+package se.lexicon.Shadow_Fight.model;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -6,7 +6,10 @@ import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
-public class App {
+import se.lexicon.Shadow_Fight.service.Fighter;
+import se.lexicon.Shadow_Fight.util.inputNumberScann;
+
+public class AppRuning {
 
 	static List<String> log = new ArrayList<>();
 
@@ -14,7 +17,7 @@ public class App {
 	private static Random random = new Random();
 	static inputNumberScann scNumber = new inputNumberScann();
 
-	public static void main(String[] args) {
+	public void run() {
 
 		String playAgain;
 
@@ -29,8 +32,6 @@ public class App {
 		System.out.println("===================================");
 
 		String[] character = { "Warrior", "Fighters", "Mage" };
-
-//							Fighter(String name, int strength, int fight, int defense, int health) {
 
 		Fighter player = new Fighter("player", getRan(5, 8), getRan(2, 4), getRan(2, 4), getRan(70, 90));
 
@@ -69,7 +70,7 @@ public class App {
 				enemy.setHealth(getRan(70, 90));
 				player.setHealth(getRan(70, 90));
 				enemy.setFight(getRan(1, 3));
-				player.setFight(getRan(1, 3 + fightNumber/5));
+				player.setFight(getRan(1, 3 + fightNumber / 5));
 				System.out.println("\nDo you want play Fight 'y' to \n");
 				playAgain = sc.nextLine().toLowerCase();
 				if (playAgain.equals("y")) {
@@ -84,12 +85,11 @@ public class App {
 				log.forEach(System.out::println);
 				run = false;
 			}
-
 		}
 	}
 
 	private static int getRan(int min, int max) {
-		return random.nextInt(max - min+1) + min;
+		return random.nextInt(max - min + 1) + min;
 	}
 
 	public static String getP_name() {
@@ -97,5 +97,4 @@ public class App {
 		System.out.println("\nWelcome to the Shadow Fight   " + p_name);
 		return p_name;
 	}
-
 }
