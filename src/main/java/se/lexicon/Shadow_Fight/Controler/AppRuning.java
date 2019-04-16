@@ -1,4 +1,4 @@
-package se.lexicon.Shadow_Fight.model;
+package se.lexicon.Shadow_Fight.Controler;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -6,7 +6,9 @@ import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
-import se.lexicon.Shadow_Fight.service.Fighter;
+import se.lexicon.Shadow_Fight.model.Battle;
+import se.lexicon.Shadow_Fight.model.Character;
+import se.lexicon.Shadow_Fight.model.Round;
 import se.lexicon.Shadow_Fight.util.inputNumberScann;
 
 public class AppRuning {
@@ -16,7 +18,9 @@ public class AppRuning {
 	private static Scanner sc = new Scanner(System.in);
 	private static Random random = new Random();
 	static inputNumberScann scNumber = new inputNumberScann();
-
+	private Battle atak = new Battle();
+	private Round round = new Round();
+	
 	public void run() {
 
 		String playAgain;
@@ -33,11 +37,11 @@ public class AppRuning {
 
 		String[] character = { "Warrior", "Fighters", "Mage" };
 
-		Fighter player = new Fighter("player", getRan(5, 8), getRan(2, 4), getRan(2, 4), getRan(70, 90));
+		Character player = new Character("player", getRan(5, 8), getRan(2, 4), getRan(2, 4), getRan(70, 90));
 
 		String[] enemis = { "Rintar", "Prince", "Lord", "Valon", "Tank", "Zersious" };
 
-		Fighter enemy = new Fighter("randon", getRan(5, 8), getRan(2, 4), getRan(2, 4), getRan(70, 90));
+		Character enemy = new Character("randon", getRan(5, 8), getRan(2, 4), getRan(2, 4), getRan(70, 90));
 
 		System.out.println("====   Enter your name:\t ====");
 
@@ -60,13 +64,15 @@ public class AppRuning {
 			String result;
 			if (getRan(0, 1) == 0) {
 //			if(fightNumber%2!=0) {	
-				result = Attack.calculation(player, enemy, 1);
+				result = atak.calculation(player, enemy, round);
 			} else {
-				result = Attack.calculation(enemy, player, 1);
+				result = atak.calculation(enemy, player, round);
 			}
+			round.getBattleLog().forEach(System.out::println);
 			log.add(result + " fight No." + fightNumber++);
 
 			if (player.getHealth() > 0) {
+				round.resetRound();
 				enemy.setHealth(getRan(70, 90));
 				player.setHealth(getRan(70, 90));
 				enemy.setFight(getRan(1, 3));

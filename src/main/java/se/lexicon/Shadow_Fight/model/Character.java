@@ -1,6 +1,6 @@
-package se.lexicon.Shadow_Fight.service;
+package se.lexicon.Shadow_Fight.model;
 
-public class Fighter {
+public class Character {
 
 	private String name;
 	private int strength;
@@ -8,7 +8,7 @@ public class Fighter {
 	private int defense;
 	private int health;
 
-	public Fighter(String name, int strength, int fight, int defense, int health) {
+	public Character(String name, int strength, int fight, int defense, int health) {
 		this.strength=strength;
 		this.name = name;
 		this.fight = fight;
