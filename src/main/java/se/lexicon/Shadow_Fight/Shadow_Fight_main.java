@@ -1,6 +1,6 @@
 package se.lexicon.Shadow_Fight;
 
-import se.lexicon.Shadow_Fight.Controler.AppRuning;
+import se.lexicon.Shadow_Fight.Controller.AppRuning;
 
 public class Shadow_Fight_main {
 

@@ -27,9 +27,10 @@ public class Round {
 		return battleLog;
 	}
 	
-	public void roud(Character p1, Character p2, Round r) {
+	public Round roud(Choracter p1, Choracter p2, Round r) {
 		while (p1.getHealth() > 0 && p2.getHealth() > 0) {
-
+			
+			r.goNextRound();
 			int outcome = (p1.getFight() + p1.getStrength()) - p2.getDefense();
 			int outcome1 = 2 * outcome;
 			p2.setHealth(p2.getHealth() - outcome1);
@@ -45,9 +46,9 @@ public class Round {
 			p1.setHealth(p1.getHealth() - outcome1);
 			r.addToLog("\n " + p2.getName() + " attack " + p1.getName() + " " + outcome1 + " damage!\n "
 					+ p1.getName() + "'s" + " Health: is " + p1.getHealth());
-			r.addToLog(" ==== Round " + r.goNextRound() + "   ====");
+			r.addToLog(" ==== Round " + r.getRoundNumber() + "   ====");
 
 		}
+		return r;
 	}
-
 }

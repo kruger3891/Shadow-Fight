@@ -2,11 +2,11 @@ package se.lexicon.Shadow_Fight.model;
 
 public class Battle {
 
-	public String calculation(Character p1, Character p2, Round r) {
+	public String calculation(Choracter p1, Choracter p2, Round r) {
 
 		r.addToLog(p1.getName() + " atack first");
 		
-		r.roud(p1, p2, r);
+		r=r.roud(p1, p2, r);
 		
 		if (p2.getHealth() <= 0 && p1.getHealth() >= 0) {
 			r.addToLog(" ==== " + p1.getName() + " You win! ====");

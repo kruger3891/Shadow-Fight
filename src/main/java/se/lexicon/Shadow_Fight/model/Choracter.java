@@ -1,6 +1,6 @@
 package se.lexicon.Shadow_Fight.model;
 
-public class Character {
+public class Choracter {
 
 	private String name;
 	private int strength;
@@ -8,7 +8,7 @@ public class Character {
 	private int defense;
 	private int health;
 
-	public Character(String name, int strength, int fight, int defense, int health) {
+	public Choracter(String name, int strength, int fight, int defense, int health) {
 		this.strength=strength;
 		this.name = name;
 		this.fight = fight;

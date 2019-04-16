@@ -1,4 +1,4 @@
-package se.lexicon.Shadow_Fight.Controler;
+package se.lexicon.Shadow_Fight.Controller;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -7,17 +7,17 @@ import java.util.Random;
 import java.util.Scanner;
 
 import se.lexicon.Shadow_Fight.model.Battle;
-import se.lexicon.Shadow_Fight.model.Character;
+import se.lexicon.Shadow_Fight.model.Choracter;
 import se.lexicon.Shadow_Fight.model.Round;
 import se.lexicon.Shadow_Fight.util.inputNumberScann;
 
 public class AppRuning {
 
-	static List<String> log = new ArrayList<>();
+	List<String> log = new ArrayList<>();
 
-	private static Scanner sc = new Scanner(System.in);
-	private static Random random = new Random();
-	static inputNumberScann scNumber = new inputNumberScann();
+	private Scanner sc = new Scanner(System.in);
+	private Random random = new Random();
+	private inputNumberScann scNumber = new inputNumberScann();
 	private Battle atak = new Battle();
 	private Round round = new Round();
 	
@@ -37,11 +37,11 @@ public class AppRuning {
 
 		String[] character = { "Warrior", "Fighters", "Mage" };
 
-		Character player = new Character("player", getRan(5, 8), getRan(2, 4), getRan(2, 4), getRan(70, 90));
+		Choracter player = new Choracter("player", getRan(5, 8), getRan(2, 4), getRan(2, 4), getRan(70, 90));
 
 		String[] enemis = { "Rintar", "Prince", "Lord", "Valon", "Tank", "Zersious" };
 
-		Character enemy = new Character("randon", getRan(5, 8), getRan(2, 4), getRan(2, 4), getRan(70, 90));
+		Choracter enemy = new Choracter("randon", getRan(5, 8), getRan(2, 4), getRan(2, 4), getRan(70, 90));
 
 		System.out.println("====   Enter your name:\t ====");
 
@@ -94,11 +94,11 @@ public class AppRuning {
 		}
 	}
 
-	private static int getRan(int min, int max) {
+	private int getRan(int min, int max) {
 		return random.nextInt(max - min + 1) + min;
 	}
 
-	public static String getP_name() {
+	public String getP_name() {
 		String p_name = sc.nextLine();
 		System.out.println("\nWelcome to the Shadow Fight   " + p_name);
 		return p_name;
